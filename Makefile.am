@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2018 Dell Inc.
+# Copyright (c) 2019 Dell Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -18,9 +18,6 @@ ACLOCAL_AMFLAGS=-I m4
 SUBDIRS = inc
 
 #Script files
-
-data_cpsdir = $(sysconfdir)/redis
-data_cps_DATA = config/etc/redis/redis.conf
 
 bin_SCRIPTS = scripts/bin/*
 
@@ -75,7 +72,7 @@ libopx_cps_api_common_la_SOURCES = \
           src/non-core/cps_api_db_interface_tools.cpp
 
 
-#Unit tests that will be merged into the config file at a later date
+#Unit tests that will be merged into the config file at a later daye
 #src/unit_test/cps_api_operation_unittest.cpp
 #src/unit_test/cps_api_events_unittest.cpp
 #src/unit_test/cps_api_object_unittest.cpp

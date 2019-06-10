@@ -277,7 +277,13 @@ bool cps_db::get_objects(cps_db::connection &conn,std::vector<char> &key,cps_api
                     continue;
                 }
             } else {
-            	_brc=false;
+                if ((rc!=nullptr) && (*rc == cps_api_ret_code_NO_EXIST)) {
+                    EV_LOGGING(CPS-DB-CONN,INFO, "DB-COMM",
+                            "Ignoring the case where object doesnt "
+                            "exist in the DB");
+                } else {
+                    _brc=false;
+                }
             	if (rc!=nullptr && *rc==cps_api_ret_code_COMMUNICATION_ERROR)
             		break;
             }

@@ -304,6 +304,7 @@ class COutputFormat:
         for i in module:
             if i.find('dell') == -1 \
                 and i.find('opx') == -1 \
+                and i.find('open') == -1 \
                 and i.find('nvo') == -1:
                 #for now as not all models are being built
                 #have to customize the list of included headers - reducing to the following set

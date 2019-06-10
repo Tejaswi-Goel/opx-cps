@@ -221,7 +221,7 @@ class CPSLibInit:
         libs = []
         path = os.getenv("LD_LIBRARY_PATH")
         if path is None:
-            path = '/usr/lib/opx'
+            path = '/usr/lib/python'
         for i in path.split(':'):
             print "Searching " + i
             files = os.listdir(i)

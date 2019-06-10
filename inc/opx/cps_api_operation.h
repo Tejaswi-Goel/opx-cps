@@ -573,6 +573,41 @@ cps_api_return_code_t cps_api_object_stats(cps_api_key_t *key, cps_api_object_t 
  */
 bool cps_api_is_registered(cps_api_key_t *key, cps_api_return_code_t *rc);
 
+
+/**
+ * Add a user-defined timestamp to the object.
+ * Recommended way of adding use timestamp is as follows
+ *
+ * Code Snippet:
+ * #include <time.h>
+ * uint64_t now_nsec()
+ * {
+ *     struct timespec  now_time;
+ *     clock_gettime(CLOCK_MONOTONIC, &now_time);
+ *     return ((uint64_t)now_time.tv_sec * 1000000000) + now_time.tv_nsec;
+ * }
+ *
+ * void my_func(cps_api_object_t obj)
+ * {
+ *     [...]
+ *     cps_api_object_set_timestamp(obj, now_nsec());
+ * }
+ *
+ * @param obj object to be sent with a valid CPS key
+ * @param timestamp timestamp to be added in nano-seconds.
+ * @return True if the timestamp is added, False otherwise
+ */
+bool cps_api_object_set_timestamp(cps_api_object_t obj, uint64_t timestamp);
+
+
+/**
+ * Retreive the user-defined timestamp(if present) from an object
+ * @param obj object to be sent with a valid CPS key
+ * @return the timestamp or 0 if no timestamp is present
+ */
+uint64_t cps_api_object_get_timestamp(cps_api_object_t obj);
+
+
 #ifdef __cplusplus
 }
 #endif

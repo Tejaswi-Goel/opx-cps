@@ -193,6 +193,25 @@ class CPSObject:
             self.obj['data'][self.generate_path(attr_str)] = \
                 types.to_data(self.generate_path(attr_str), val)
 
+    def set_timestamp(self, timestamp):
+        """
+        Add a user-defined timestamp to the object.
+        @timestamp - timestamp to be added in nano-seconds
+        """
+        self.add_attr('cps/object-group/user-timestamp-nsec', timestamp)
+
+    def get_timestamp(self):
+        """
+        Retrieve a user-defined timestamp(if present) from an object.
+        @return - the timestamp or 0 if no timestamp is present
+        """
+        timestamp = 0
+        try:
+            timestamp = self.get_attr_data('cps/object-group/user-timestamp-nsec')
+        except:
+            timestamp = 0
+        return timestamp
+
     def del_attr(self, attr_str):
         """
         Delete an attribute and its value from the object.
