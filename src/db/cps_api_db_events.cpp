@@ -294,6 +294,9 @@ static bool _process_list(_cps_event_queue_list_t &current) {
         if (current_addr!=_addr) {
             if (!_change_connection(current_addr,_addr,conn,_sent)) {
                 _halted = true;
+                // Dequeue object since _addr is not in connection cache
+                cps_api_object_delete(_obj);
+                std::get<1>(it) = nullptr;
                 break;
             }
             _sent = 0;

@@ -90,6 +90,7 @@ PyObject * py_cps_get(PyObject *self, PyObject *args) {
                     py_set_error_string("Memory allocation error.");
                     return nullptr;
                 }
+                continue;
             }
             if (PyDict_Check(strObj)) {
                 cps_api_object_t o = dict_to_cps_obj(strObj);
@@ -102,6 +103,10 @@ PyObject * py_cps_get(PyObject *self, PyObject *args) {
                     py_set_error_string("Memory allocation error.");
                     return nullptr;
                 }
+                continue;
+            }
+            if (PyInt_Check(strObj)) {
+                gr.timeout = PyInt_AsLong(strObj);
             }
         }
     }

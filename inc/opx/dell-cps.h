@@ -134,6 +134,9 @@ This is used internally for debugging purposes only.*/
 /*This is the timestamp of when the event is generated.*/
 /*type=uint64*/ 
   CPS_OBJECT_GROUP_TIMESTAMP = 131119,
+/*This is a user-defined timestamp in nano-seconds that can be inserted into an object.*/
+/*type=uint64*/
+  CPS_OBJECT_GROUP_USER_TIMESTAMP_NSEC = 131134,
 } CPS_OBJECT_GROUP_t;
 /* Object cps/db-instance */
 
